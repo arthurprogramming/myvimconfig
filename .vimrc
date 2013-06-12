@@ -50,7 +50,3 @@ set incsearch
 set ignorecase
 set smartcase
 
-" Off automatic backup
-set nobackup
-set nowritebackup
-set noswapfile
