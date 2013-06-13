@@ -35,6 +35,7 @@ map <F2> :NERDTreeToggle <CR>
 nmap <Tab> gt
 nmap <S-Tab> gT
 nmap ,m :NERDTreeFind<CR>
+map <C-F> :Ack  
 
 
 "Enabling 256 colors
