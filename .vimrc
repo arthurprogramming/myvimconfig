@@ -31,11 +31,12 @@ set mouse=a
 set laststatus=2
 
 "Mapping
-map <F2> :NERDTreeToggle <CR>
+map <C-E> :NERDTreeToggle <CR>
 nmap <Tab> gt
 nmap <S-Tab> gT
-nmap ,m :NERDTreeFind<CR>
-map <C-F> :Ack  
+nmap <C-M> :NERDTreeFind<CR>
+map <C-F> :Ack 
+map <C-L> \c<space>
 
 
 "Enabling 256 colors
