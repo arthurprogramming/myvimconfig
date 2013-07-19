@@ -31,6 +31,7 @@ set mouse=a
 set laststatus=2
 
 "Mapping
+map <F12> :NERDTreeFromBookmark 
 map <C-E> :NERDTreeToggle <CR>
 nmap <Tab> gt
 nmap <S-Tab> gT
@@ -41,6 +42,9 @@ map <C-L> \c<space>
 
 "Enabling 256 colors
 set t_Co=256
+
+"Setting right margin
+set colorcolumn=80
 
 "No backup files
 set nobackup
@@ -53,3 +57,8 @@ set incsearch
 set ignorecase
 set smartcase
 
+"Ignoring files and dirs in ctrlp.vim
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/](\.git|conny|release|solrslave|tools|docs|tmp|data)$',
+    \ 'file': '\v\.(txt|png|gif|jpg|psd|bat|jar)$',
+    \ }
