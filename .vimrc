@@ -41,6 +41,8 @@ nnoremap <C-M> :NERDTreeFind <CR>
 noremap <C-F> :Ack 
 map <C-L> \c<space>
 inoremap jk <esc>
+map <C-T> :tabnew<CR>
+map <F12> :NERDTreeFromBookmark 
 
 "Disabling Arrow Keys
 nnoremap <LEFT> <nop>
@@ -50,6 +52,9 @@ nnoremap <RIGHT> <nop>
 
 "Enabling 256 colors
 set t_Co=256
+
+"Setting right margin
+set colorcolumn=80
 
 "No backup files
 set nobackup
