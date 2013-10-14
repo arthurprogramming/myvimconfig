@@ -78,3 +78,6 @@ let g:ctrlp_custom_ignore = {
 
 "Ctags - put here the path of your file tags or comment/delete the line
 set tags=/var/www/MyProject/tags
+
+"Text diff in gray color to avoid conflicts with php syntax highlighting
+highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black 
