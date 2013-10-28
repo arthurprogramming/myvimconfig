@@ -81,3 +81,8 @@ set tags=/var/www/MyProject/tags
 
 "Text diff in gray color to avoid conflicts with php syntax highlighting
 highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black 
+
+"Fugitive
+"Preventing many buffers are created useless
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
