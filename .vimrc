@@ -86,3 +86,6 @@ highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
 "Preventing many buffers are created useless
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
+"DBExt
+let g:dbext_default_profile_local = 'type=MYSQL:user=root:passwd=root:dbname=databasename'
+let g:dbext_default_profile = 'local'
