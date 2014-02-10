@@ -89,3 +89,6 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 "DBExt
 let g:dbext_default_profile_local = 'type=MYSQL:user=root:passwd=root:dbname=databasename'
 let g:dbext_default_profile = 'local'
+
+"Snippets
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", $HOME ."/myvimconfig/mysnippets"]
