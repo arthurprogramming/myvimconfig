@@ -14,8 +14,13 @@ Just clone into your home and create two symbol links, for example:
 .vim:
 ~ $ ln -s /home/user/myvimconfig/.vim .vim
 
+
 ~ $ cd /home/user/myvimconfig/
+
+
 ~ $ git submodule init
+
+
 ~ $ git submodule update
 
 :D
