@@ -42,7 +42,6 @@ noremap <C-F> :Ack
 map <C-L> \c<space>
 inoremap jk <esc>
 noremap <F3> :tabnew <CR>
-map <F12> :NERDTreeFromBookmark 
 
 "Disabling Arrow Keys
 nnoremap <LEFT> <nop>
@@ -53,9 +52,6 @@ nnoremap <RIGHT> <nop>
 "Enabling 256 colors
 set t_Co=256
 
-"Setting right margin for code standards, remove if you do not like it
-set colorcolumn=80
-
 "No backup files
 set nobackup
 set nowritebackup
@@ -65,21 +61,22 @@ set noswapfile
 set hlsearch
 set incsearch
 set ignorecase
-set smartcase
 
-"CtrlP default search type: filename
+"CtrlP
+"default search type: filename
 let g:ctrlp_by_filename = 1
-
 "Ignoring files and dirs in ctrlp.vim (use according to your need)
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/](\.git|docs|tmp)$',
     \ 'file': '\v\.(txt|png|gif|jpg|psd|bat|jar)$',
     \ }
 
-"Ctags - put here the path of your file tags or comment/delete the line
-set tags=/var/www/MyProject/tags
+"Ctags
+"search for tags file in current and parent path
+"if unset uses 'tags' file in current path './tags'
+set tags=./tags;,./../tags
 
-"Text diff in gray color to avoid conflicts with php syntax highlighting
+"Text diff in gray color
 highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black 
 
 "Fugitive
