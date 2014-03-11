@@ -89,3 +89,9 @@ let g:dbext_default_profile = 'local'
 
 "Snippets
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", $HOME ."/myvimconfig/mysnippets"]
+
+let g:SuperTabDefaultCompletionType = "context"
+let g:phpcomplete_parse_docblock_comments = 1
+
+"Set clipboard as default register
+set clipboard=unnamedplus
