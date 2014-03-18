@@ -95,3 +95,32 @@ let g:phpcomplete_parse_docblock_comments = 1
 
 "Set clipboard as default register
 set clipboard=unnamedplus
+
+"Getter and Setter template
+let b:phpgetset_setterTemplate =
+  \ "    \n" .
+  \ "    /**\n" .
+  \ "     * Set %varname%\n" .
+  \ "     *\n" .
+  \ "     * @param mixed %varname%\n" .
+  \ "     */\n" .
+  \ "    public function %funcname%($%varname%)\n" .
+  \ "    {\n" .
+  \ "        $this->%varname% = $%varname%;\n" .
+  \ "        return $this;\n" .
+  \ "    }"
+
+let b:phpgetset_getterTemplate =
+ \ "    \n" .
+ \ "    /**\n" .
+ \ "     * Get %varname%\n" .
+ \ "     *\n" .
+ \ "     * @return mixed\n" .
+ \ "     */\n" .
+ \ "    public function %funcname%()\n" .
+ \ "    {\n" .
+ \ "        return $this->%varname%;\n" .
+ \ "    }"
+
+"Mapping
+vnoremap <C-W> :InsertGetterSetter <CR>
