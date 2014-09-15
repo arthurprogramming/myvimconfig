@@ -38,7 +38,6 @@ noremap <C-E> :NERDTreeToggle <CR>
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <C-M> :NERDTreeFind <CR>
-noremap <C-F> :Ack 
 map <C-L> \c<space>
 inoremap jk <esc>
 noremap <F3> :tabnew <CR>
@@ -71,6 +70,10 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\v\.(txt|png|gif|jpg|psd|bat|jar)$',
     \ }
 
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_use_caching = 0
+let g:ctrlp_match_window = 'results:100'
+
 "Ctags
 "search for tags file in current and parent path
 "if unset uses 'tags' file in current path './tags'
@@ -82,10 +85,6 @@ highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
 "Fugitive
 "Preventing many buffers are created useless
 autocmd BufReadPost fugitive://* set bufhidden=delete
-
-"DBExt
-let g:dbext_default_profile_local = 'type=MYSQL:user=root:passwd=root:dbname=databasename'
-let g:dbext_default_profile = 'local'
 
 "Snippets
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", $HOME ."/myvimconfig/mysnippets"]
@@ -124,3 +123,29 @@ let b:phpgetset_getterTemplate =
 
 "Mapping
 vnoremap <C-W> :InsertGetterSetter <CR>
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
+"Cscope
+if has("cscope")
+    set csprg=/usr/local/bin/cscope
+    set csto=0
+    set cst
+    set nocsverb
+
+    "add any database in current directory
+    if filereadable("cscope.out")
+	cs add cscope.out
+    endif
+endif
+
+nnoremap <F8> :cs reset <CR>
+nnoremap <C-\>s :cs find s <cword><CR>
+nnoremap <C-]> :cs find g <cword><CR>
+nnoremap <C-\>c :cs find c <cword><CR>
+nnoremap <C-F> :cs find t 
+nnoremap <C-\>e :cs find e <cword><CR>
+nnoremap <C-\>f :cs find f <cword><CR>
+nnoremap <C-\>i :cs find i <cword><CR>
+nnoremap <C-\>d :cs find d <cword><CR>
