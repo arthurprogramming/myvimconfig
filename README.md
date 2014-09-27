@@ -9,13 +9,13 @@ Installation/configuration suggested
 Just clone into your home and create two symbol links, for example:
 
 .vimrc:
-~ $ ln -s /home/user/myvimconfig/.vimrc .vimrc
+~ $ ln -s /home/$USER/myvimconfig/.vimrc .vimrc
 
 .vim:
-~ $ ln -s /home/user/myvimconfig/.vim .vim
+~ $ ln -s /home/$USER/myvimconfig/.vim .vim
 
 
-~ $ cd /home/user/myvimconfig/
+~ $ cd /home/$USER/myvimconfig/
 
 
 ~ $ git submodule init
