@@ -66,12 +66,12 @@ set ignorecase
 let g:ctrlp_by_filename = 1
 "Ignoring files and dirs in ctrlp.vim (use according to your need)
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/](\.git|docs|tmp)$',
+    \ 'dir':  '\v[\/](conny|release|solrslave|tools|docs|tmp|data)$',
     \ 'file': '\v\.(txt|png|gif|jpg|psd|bat|jar)$',
     \ }
 
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-let g:ctrlp_use_caching = 0
+"let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+"let g:ctrlp_use_caching = 0
 let g:ctrlp_match_window = 'results:100'
 
 "Ctags
@@ -87,10 +87,13 @@ highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
 "Snippets
-let g:UltiSnipsSnippetDirectories = ["UltiSnips", $HOME ."/myvimconfig/mysnippets"]
+"let g:UltiSnipsSnippetDirectories = ["UltiSnips", $HOME ."/myvimconfig/mysnippets"]
 
 let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
+
 let g:phpcomplete_parse_docblock_comments = 1
+au FileType php set omnifunc=phpcomplete#CompletePHP
 
 "Set clipboard as default register
 set clipboard=unnamedplus
@@ -149,3 +152,11 @@ nnoremap <C-\>e :cs find e <cword><CR>
 nnoremap <C-\>f :cs find f <cword><CR>
 nnoremap <C-\>i :cs find i <cword><CR>
 nnoremap <C-\>d :cs find d <cword><CR>
+
+"preview window
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+"syntastic
+let g:syntastic_check_on_open = 1
+let g:syntastic_php_checkers = ['php', 'phpmd']
