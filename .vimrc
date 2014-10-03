@@ -41,6 +41,7 @@ nnoremap <C-M> :NERDTreeFind <CR>
 map <C-L> \c<space>
 inoremap jk <esc>
 noremap <F3> :tabnew <CR>
+noremap <C-W> :BufExplorer <CR>
 
 "Disabling Arrow Keys
 nnoremap <LEFT> <nop>
