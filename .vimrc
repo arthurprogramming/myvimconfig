@@ -41,7 +41,7 @@ nnoremap <C-M> :NERDTreeFind <CR>
 map <C-L> \c<space>
 inoremap jk <esc>
 noremap <F3> :tabnew <CR>
-noremap <C-W> :BufExplorer <CR>
+noremap <F2> :BufExplorer <CR>
 
 "Disabling Arrow Keys
 nnoremap <LEFT> <nop>
@@ -67,13 +67,15 @@ set ignorecase
 let g:ctrlp_by_filename = 1
 "Ignoring files and dirs in ctrlp.vim (use according to your need)
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/](conny|release|solrslave|tools|docs|tmp|data)$',
+    \ 'dir':  '\v[\/](docs|tmp)$',
     \ 'file': '\v\.(txt|png|gif|jpg|psd|bat|jar)$',
     \ }
 
+let g:ctrlp_match_window = 'results:100'
+
+"if using git
 "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 "let g:ctrlp_use_caching = 0
-let g:ctrlp_match_window = 'results:100'
 
 "Ctags
 "search for tags file in current and parent path
@@ -88,11 +90,13 @@ highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
 "Snippets
-"let g:UltiSnipsSnippetDirectories = ["UltiSnips", $HOME ."/myvimconfig/mysnippets"]
+let g:UltiSnipsSnippetDirectories = ["UltiSnips", $HOME ."/myvimconfig/mysnippets"]
+let g:UltiSnipsExpandTrigger="<C-J>"
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
 
+"phpcomplete
 let g:phpcomplete_parse_docblock_comments = 1
 au FileType php set omnifunc=phpcomplete#CompletePHP
 
@@ -106,6 +110,7 @@ let b:phpgetset_setterTemplate =
   \ "     * Set %varname%\n" .
   \ "     *\n" .
   \ "     * @param mixed %varname%\n" .
+  \ "     * @return $this\n" .
   \ "     */\n" .
   \ "    public function %funcname%($%varname%)\n" .
   \ "    {\n" .
