@@ -167,3 +167,4 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 let g:syntastic_check_on_open = 1
 let g:syntastic_php_checkers = ['php', 'phpmd', 'phpcs']
 let g:syntastic_php_phpcs_args = "--standard=PSR2"
+let g:syntastic_aggregate_errors = 1
