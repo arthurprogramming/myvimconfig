@@ -19,9 +19,6 @@
 [submodule ".vim/bundle/nerdcommenter"]
 	path = .vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule ".vim/bundle/phpfolding"]
-	path = .vim/bundle/phpfolding
-	url = https://github.com/rayburgemeestre/phpfolding.vim
 [submodule ".vim/bundle/vmustache"]
 	path = .vim/bundle/vmustache
 	url = https://github.com/tobyS/vmustache.git

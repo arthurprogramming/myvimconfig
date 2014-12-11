@@ -107,7 +107,6 @@ set clipboard=unnamedplus
 let b:phpgetset_setterTemplate =
   \ "    \n" .
   \ "    /**\n" .
-  \ "     * Set %varname%\n" .
   \ "     *\n" .
   \ "     * @param mixed %varname%\n" .
   \ "     * @return $this\n" .
@@ -121,7 +120,6 @@ let b:phpgetset_setterTemplate =
 let b:phpgetset_getterTemplate =
  \ "    \n" .
  \ "    /**\n" .
- \ "     * Get %varname%\n" .
  \ "     *\n" .
  \ "     * @return mixed\n" .
  \ "     */\n" .
@@ -130,8 +128,6 @@ let b:phpgetset_getterTemplate =
  \ "        return $this->%varname%;\n" .
  \ "    }"
 
-"Mapping
-vnoremap <C-W> :InsertGetterSetter <CR>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -149,6 +145,7 @@ if has("cscope")
     endif
 endif
 
+"Mapping
 nnoremap <F8> :cs reset <CR>
 nnoremap <C-\>s :cs find s <cword><CR>
 nnoremap <C-]> :cs find g <cword><CR>
@@ -158,6 +155,8 @@ nnoremap <C-\>e :cs find e <cword><CR>
 nnoremap <C-\>f :cs find f <cword><CR>
 nnoremap <C-\>i :cs find i <cword><CR>
 nnoremap <C-\>d :cs find d <cword><CR>
+vnoremap <C-O> :InsertGetterSetter <CR>
+nnoremap <F4> :!php-cs-fixer fix % --level=symfony<CR>
 
 "preview window
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
