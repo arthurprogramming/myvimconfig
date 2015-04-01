@@ -33,6 +33,9 @@ set mouse=a
 "Always Show statusline
 set laststatus=2
 
+"No Wrap
+set nowrap
+
 "Mapping
 noremap <C-E> :NERDTreeToggle <CR>
 nnoremap <Tab> gt
@@ -48,6 +51,9 @@ nnoremap <LEFT> <nop>
 nnoremap <DOWN> <nop>
 nnoremap <UP> <nop>
 nnoremap <RIGHT> <nop>
+command Q q
+command Qa qa
+command W w
 
 "Enabling 256 colors
 set t_Co=256
@@ -91,7 +97,7 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 "Snippets
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", $HOME ."/myvimconfig/mysnippets"]
-let g:UltiSnipsExpandTrigger="<C-J>"
+let g:UltiSnipsExpandTrigger="<C-H>"
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
@@ -134,7 +140,7 @@ cmap w!! w !sudo tee > /dev/null %
 
 "Cscope
 if has("cscope")
-    set csprg=/usr/local/bin/cscope
+    set csprg=/usr/bin/cscope
     set csto=0
     set cst
     set nocsverb
@@ -164,6 +170,5 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "syntastic
 let g:syntastic_check_on_open = 1
-let g:syntastic_php_checkers = ['php', 'phpmd', 'phpcs']
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_php_phpcs_args = "--standard=PSR2"
-let g:syntastic_aggregate_errors = 1
