@@ -103,8 +103,10 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
 
 "phpcomplete
-let g:phpcomplete_parse_docblock_comments = 1
 au FileType php set omnifunc=phpcomplete#CompletePHP
+let g:phpcomplete_parse_docblock_comments = 1
+let g:phpcomplete_complete_for_unknown_classes = 1
+set completeopt=longest,menuone
 
 "Set clipboard as default register
 set clipboard=unnamedplus
