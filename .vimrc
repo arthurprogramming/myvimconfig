@@ -45,8 +45,8 @@ map <C-L> \c<space>
 inoremap jk <esc>
 noremap <F3> :tabnew <CR>
 noremap <F2> :BufExplorer <CR>
-noremap <C-J> <esc>ddp
-noremap <C-K> <esc>ddkP
+nnoremap <C-J> ddp==
+nnoremap <C-K> ddkP==
 
 "Disabling Arrow Keys
 nnoremap <LEFT> <nop>
