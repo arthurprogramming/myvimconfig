@@ -99,7 +99,6 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 "Snippets
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", $HOME ."/myvimconfig/mysnippets"]
-let g:UltiSnipsExpandTrigger="<C-H>"
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = '<c-x><c-o>'
