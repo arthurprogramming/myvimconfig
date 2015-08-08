@@ -44,15 +44,10 @@ nnoremap <C-M> :NERDTreeFind <CR>
 map <C-L> \c<space>
 inoremap jk <esc>
 noremap <F3> :tabnew <CR>
-noremap <F2> :BufExplorer <CR>
 nnoremap <C-J> ddp==
 nnoremap <C-K> ddkP==
 
-"Disabling Arrow Keys
-nnoremap <LEFT> <nop>
-nnoremap <DOWN> <nop>
-nnoremap <UP> <nop>
-nnoremap <RIGHT> <nop>
+"Avoid typo
 command Q q
 command Qa qa
 command W w
@@ -81,21 +76,8 @@ let g:ctrlp_custom_ignore = {
 
 let g:ctrlp_match_window = 'results:100'
 
-"if using git
-"let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-"let g:ctrlp_use_caching = 0
-
-"Ctags
-"search for tags file in current and parent path
-"if unset uses 'tags' file in current path './tags'
-set tags=./tags;,./../tags
-
 "Text diff in gray color
 highlight DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black 
-
-"Fugitive
-"Preventing many buffers are created useless
-autocmd BufReadPost fugitive://* set bufhidden=delete
 
 "Snippets
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", $HOME ."/myvimconfig/mysnippets"]
@@ -109,69 +91,27 @@ let g:phpcomplete_parse_docblock_comments = 1
 let g:phpcomplete_complete_for_unknown_classes = 1
 set completeopt=longest,menuone
 
-"Set clipboard as default register
-set clipboard=unnamedplus
-
-"Getter and Setter template
-let b:phpgetset_setterTemplate =
-  \ "    \n" .
-  \ "    /**\n" .
-  \ "     *\n" .
-  \ "     * @param mixed %varname%\n" .
-  \ "     * @return $this\n" .
-  \ "     */\n" .
-  \ "    public function %funcname%($%varname%)\n" .
-  \ "    {\n" .
-  \ "        $this->%varname% = $%varname%;\n" .
-  \ "        return $this;\n" .
-  \ "    }"
-
-let b:phpgetset_getterTemplate =
- \ "    \n" .
- \ "    /**\n" .
- \ "     *\n" .
- \ "     * @return mixed\n" .
- \ "     */\n" .
- \ "    public function %funcname%()\n" .
- \ "    {\n" .
- \ "        return $this->%varname%;\n" .
- \ "    }"
-
-
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
-
-"Cscope
-if has("cscope")
-    set csprg=/usr/bin/cscope
-    set csto=0
-    set cst
-    set nocsverb
-
-    "add any database in current directory
-    if filereadable("cscope.out")
-	cs add cscope.out
-    endif
-endif
-
-"Mapping
-nnoremap <F8> :cs reset <CR>
-nnoremap <C-\>s :cs find s <cword><CR>
-nnoremap <C-]> :cs find g <cword><CR>
-nnoremap <C-\>c :cs find c <cword><CR>
-nnoremap <C-F> :cs find t 
-nnoremap <C-\>e :cs find e <cword><CR>
-nnoremap <C-\>f :cs find f <cword><CR>
-nnoremap <C-\>i :cs find i <cword><CR>
-nnoremap <C-\>d :cs find d <cword><CR>
-vnoremap <C-O> :InsertGetterSetter <CR>
-nnoremap <F4> :!php-cs-fixer fix % --level=symfony<CR>
-
 "preview window
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 "syntastic
 let g:syntastic_check_on_open = 1
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_php_phpcs_args = "--standard=PSR2"
+let g:syntastic_php_checkers = ['php']
+
+function! s:DiffWithSaved()
+    let filetype=&ft
+    diffthis
+    vnew | r # | normal! 1Gdd
+    diffthis
+    exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffIt call s:DiffWithSaved()
+
+function! s:LintBuffer()
+    silent w! /tmp/%:t
+    "silent !php -l /tmp/%:t > /tmp/lintresult
+    !php -l /tmp/%:t > /tmp/lintresult
+    "silent pedit /tmp/lintresult
+endfunction
+com! LintIt call s:LintBuffer()
