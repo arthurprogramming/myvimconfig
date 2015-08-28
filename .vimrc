@@ -196,7 +196,6 @@ endfunction
 com! Jfile call s:JsonFile()
 
 function! s:PhpArray()
-    exe ".!php -r
-    'print_r(json_decode(file_get_contents(\"php://stdin\")));'"
+    exe ".!php -r 'print_r(json_decode(file_get_contents(\"php://stdin\")));'"
 endfunction
 com! Parray call s:PhpArray()
