@@ -143,7 +143,7 @@ cmap w!! w !sudo tee > /dev/null %
 
 "Cscope
 if has("cscope")
-    set csprg=/usr/bin/cscope
+    set csprg=/usr/local/bin/cscope
     set csto=0
     set cst
     set nocsverb
@@ -175,3 +175,28 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 let g:syntastic_check_on_open = 1
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_php_phpcs_args = "--standard=PSR2"
+
+function! s:DiffBuffer()
+    let filetype=&ft
+    diffthis
+    vnew | r # | normal! 1Gdd
+    diffthis
+    exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffIt call s:DiffBuffer()
+
+function! s:JsonLine()
+    exe ".!python -m json.tool"
+endfunction
+com! Jline call s:JsonLine()
+
+function! s:JsonFile()
+    exe "%!python -m json.tool"
+endfunction
+com! Jfile call s:JsonFile()
+
+function! s:PhpArray()
+    exe ".!php -r
+    'print_r(json_decode(file_get_contents(\"php://stdin\")));'"
+endfunction
+com! Parray call s:PhpArray()
