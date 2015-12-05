@@ -26,6 +26,8 @@ set smarttab
 
 "Syntax
 syntax on
+set background=dark
+colorscheme solarized
 
 "Allow mouse
 set mouse=a
@@ -80,6 +82,8 @@ let g:ctrlp_custom_ignore = {
     \ }
 
 let g:ctrlp_match_window = 'results:100'
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 40
 
 "if using git
 "let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
