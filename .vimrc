@@ -26,8 +26,8 @@ set smarttab
 
 "Syntax
 syntax on
-set background=dark
-colorscheme solarized
+"set background=dark
+"colorscheme solarized
 
 "Allow mouse
 set mouse=a
