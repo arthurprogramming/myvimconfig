@@ -73,6 +73,13 @@ set incsearch
 set ignorecase
 
 "CtrlP
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
 "default search type: filename
 let g:ctrlp_by_filename = 1
 "Ignoring files and dirs in ctrlp.vim (use according to your need)
